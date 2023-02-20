@@ -1,0 +1,29 @@
+# BEGIN WP Hide & Security Enhancer
+<IfModule mod_rewrite.c> 
+RewriteEngine On 
+RewriteBase / 
+#WriteCheckString:1676860521_85387
+RewriteRule ^rewrite_test_1676860521_85387/? /wp-content/plugins/wp-hide-security-enhancer/include/rewrite-confirm.php [L,QSA]
+RewriteRule ^rewrite_test_static_file_1676860521_85387/? /wp-content/plugins/wp-hide-security-enhancer/composer.json [L,QSA]
+
+RewriteCond %{REQUEST_URI} /nloginad$
+RewriteRule ^(.*)$ /nloginad/ [R=301,L]
+RewriteRule ^nloginad(.*) /wp-admin$1 [L,QSA]
+</IfModule> 
+
+# END WP Hide & Security Enhancer
+# BEGIN WordPress
+# Las directivas (líneas) entre "BEGIN WordPress" y "END WordPress" son
+# generadas dinámicamente y solo deberían ser modificadas mediante filtros de WordPress.
+# Cualquier cambio en las directivas que hay entre esos marcadores serán sobrescritas.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
